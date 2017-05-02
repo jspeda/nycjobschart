@@ -6,7 +6,7 @@ cityJobsData
   .then(data => data.json())
   .then(data=> {
     const agencyFrequency = data.reduce((agencies, value) => {
-      agencies[value.agency] = agencies.hasOwnProperty(value.agency) ? agencies[value.agency] + 1 : 1;
+      agencies[value.agency] = agencies[value.agency] ? agencies[value.agency] + 1 : 1;
       return agencies;
     }, {})
     console.log(agencyFrequency);
@@ -24,22 +24,4 @@ cityJobsData
       }
     })
   })
-  .then(agencies => {
-    console.log(agencies);
-    // const agencyKeys = Object.keys(agencies);
-    // console.log(agencyKeys);
-    // const myChart = new Chart(ctx, {
-    //   type: 'bar',
-    //   data: {
-    //     labels:
-    //   }
-    // })
-  })
-
-
-// const myChart = new Chart(ctx, {
-//   type: 'bar',
-//   data: {
-//
-//   }
-// })
+  .catch(err => console.log(err));
