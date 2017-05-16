@@ -9,6 +9,15 @@ cityJobsData
       agencies[value.agency] = agencies[value.agency] ? agencies[value.agency] + 1 : 1;
       return agencies;
     }, {});
+    const keys = Object.keys(agencyFrequency);
+    const agencyArray = keys.map(key => {
+      return {
+        name: key,
+        value: agencyFrequency[key]
+      }
+    })
+    agencyArray.sort((a, b) => b.value - a.value);
+    console.log(agencyArray);
     const myChart = new Chart(ctx, {
       type: 'bar',
       data: {
@@ -18,6 +27,13 @@ cityJobsData
           data: Object.values(agencyFrequency),
           backgroundColor: "rgba(115, 218, 228, 0.4)"
         }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            type: 'linear',
+          }]
+        }
       }
     })
   })
