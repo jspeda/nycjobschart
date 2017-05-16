@@ -8,18 +8,15 @@ cityJobsData
     const agencyFrequency = data.reduce((agencies, value) => {
       agencies[value.agency] = agencies[value.agency] ? agencies[value.agency] + 1 : 1;
       return agencies;
-    }, {})
-    console.log(agencyFrequency);
-    const agencyKeys = Object.keys(agencyFrequency);
-    console.log(agencyKeys);
+    }, {});
     const myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: agencyKeys,
+        labels: Object.keys(agencyFrequency),
         datasets: [{
-          label: 'jobs',
+          label: 'Number of jobs available, May 2017',
           data: Object.values(agencyFrequency),
-          backgroundColor: "rgba(153, 255, 51, 0.4)"
+          backgroundColor: "rgba(115, 218, 228, 0.4)"
         }]
       }
     })
