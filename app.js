@@ -12,19 +12,18 @@ cityJobsData
     const keys = Object.keys(agencyFrequency);
     const agencyArray = keys.map(key => {
       return {
-        name: key,
+        key: key,
         value: agencyFrequency[key]
       }
     })
     agencyArray.sort((a, b) => b.value - a.value);
-    console.log(agencyArray);
     const myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: Object.keys(agencyFrequency),
+        labels: agencyArray.map(item => item.key),
         datasets: [{
           label: 'Number of jobs available, May 2017',
-          data: Object.values(agencyFrequency),
+          data: agencyArray.map(item => item.value),
           backgroundColor: "rgba(115, 218, 228, 0.4)"
         }]
       },
